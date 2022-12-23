@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: One unique payment per payment_method
+    columns: 
+      - name: payment_id
+        description: The primary key for the 'stg_payments'
+        tests:
+          - not_null
+      - name: order_id
+        description: The foreign key for the 'stg_orders'
+        tests:
+          - not_null
+      - name: payment_method
+        description: The method the customer paid the order
+      - name: status
+        description: '{{ doc("payment_status") }}'
+      - name: amount
+        description: The total amount paid per order
+      - name: created_at
+        description: The date when the payment record was created
